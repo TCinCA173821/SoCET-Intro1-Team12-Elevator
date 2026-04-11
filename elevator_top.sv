@@ -48,5 +48,31 @@ module elevator_top (
 		.door_open_req (door_open_req),
 		.door_close_req (door_close_req),
 	);
+
+	elevator_fsm u_fsm (
+		.clk           (clk),
+        .rst_n         (rst_n),
+        .next_floor    (next_floor),
+        .door_open_req (door_open_req),
+        .door_close_req(door_close_req),
+        .curr_floor    (curr_floor),
+        .door_open     (door_open),
+        .moving        (moving),
+        .dir_up        (dir_up)
+    );
+ 
+    //display
+    display u_disp (
+        .curr_floor (curr_floor),
+        .dir_up     (dir_up),
+        .moving     (moving),
+        .door_open  (door_open),
+        .seg        (seg),
+        .led_up     (led_up),
+        .led_down   (led_down),
+        .led_door   (led_door)
+    );
+ 
+endmodule 
 		
 
