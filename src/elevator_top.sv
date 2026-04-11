@@ -30,7 +30,7 @@ module elevator_top (
 	logic dir_up; //no need for dir_down, this tells us if motion is downwards too
 
 // floor controller
-
+// i hate homework
 	floor_controller u_ctrl (
 		.clk (clk),
 		.rst_n (rst_n),
