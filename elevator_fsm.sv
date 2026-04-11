@@ -17,11 +17,16 @@ module elevator_fsm (
 
     state_t c_state, n_state;
     assign state = c_state;
+    
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
-            state <= IDLE;
-        
+            c_state <= IDLE;
+        end else begin
+            c_state <= n_state;
+        end
+    end
+
 
 endmodule 
 
