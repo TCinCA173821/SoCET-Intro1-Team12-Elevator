@@ -21,8 +21,8 @@ module elevator_fsm (
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
             state <= IDLE;
+    
         
-
 endmodule 
 
 // test comment
