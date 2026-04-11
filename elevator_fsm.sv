@@ -4,7 +4,7 @@ typedef enum logic [3:0] {
 
 module elevator_fsm (
     input logic clk,
-    input logic rst_n,
+    input logic rst,
     input logic [2:0] next_floor,
     input logic door_open_req,
     input logic door_close_req,
@@ -16,5 +16,11 @@ module elevator_fsm (
 );
 
     state_t c_state, n_state;
+    assign state = c_state;
+
+    always_ff @(posedge clk or posedge rst) begin
+        if(rst) begin
+            state <= IDLE;
+        
 
 endmodule 

@@ -1,6 +1,6 @@
 module elevator_top (
 	input logic clk,
-	input logic rst_n,
+	input logic rst,
 
 	input logic [4:0] inside_btn,  //floors 
 	input logic btn_open,
