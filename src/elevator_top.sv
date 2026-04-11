@@ -1,6 +1,6 @@
 module elevator_top (
 	input logic clk,
-	input logic rst_n,
+	input logic rst,
 
 	input logic [4:0] inside_btn,  //floors 
 	input logic btn_open,
@@ -30,7 +30,7 @@ module elevator_top (
 	logic dir_up; //no need for dir_down, this tells us if motion is downwards too
 
 // floor controller
-
+// i hate homework
 	floor_controller u_ctrl (
 		.clk (clk),
 		.rst_n (rst_n),
