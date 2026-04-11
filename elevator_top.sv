@@ -18,7 +18,7 @@ module elevator_top (
 );
 
 // internal wires, no data being processed here
-
+// we need to know the current floor and the next floor to control the outputs and the fsm, we also need to know if the door is open or not, if there is a request to open or close the door, if the elevator is moving, and if it is going up or down
 // curr_floor and next_floor are 3 wires because they can represent 0-7 in binary instead of doing 5 seperate wires (one per floor)
 
 	logic [2:0] curr_floor;
