@@ -21,6 +21,7 @@ module elevator_fsm (
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
+<<<<<<< HEAD
             c_state <= IDLE;
         end else begin
             c_state <= n_state;
@@ -28,6 +29,11 @@ module elevator_fsm (
     end
 
 
+=======
+            state <= IDLE;
+    
+        
+>>>>>>> e4a05841cf881facfca5350c6e301fed91e8dc7c
 endmodule 
 
 // test comment
