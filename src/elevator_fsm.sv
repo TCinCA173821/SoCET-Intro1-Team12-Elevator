@@ -26,6 +26,28 @@ module elevator_fsm (
             c_state <= n_state;
         end
     end
+
+    always_comb begin 
+        case(c_state)
+            IDLE: if(curr_floor > next_floor) n_state = MOVING_DOWN;
+                else if(curr_floor < next_floor) n_state = MOVING_UP;
+                else if(curr_floor == next_floor) n_state = IDLE;
+            LV1: n_state = (door_open_req) ? DOOR_OPEN : LV1;
+            LV2: n_state = (door_open_req) ? DOOR_OPEN : LV2;
+            LV3: n_state = (door_open_req) ? DOOR_OPEN : LV3;
+            LV4: n_state = (door_open_req) ? DOOR_OPEN : LV4;
+            LV5: n_state = (door_open_req) ? DOOR_OPEN : LV5;
+            LV6: n_state = (door_open_req) ? DOOR_OPEN : LV6;
+            LV7: n_state = (door_open_req) ? DOOR_OPEN : LV7;
+            LV8: n_state = (door_open_req) ? DOOR_OPEN : LV8;
+            MOVING_UP: n_state = (curr_floor == next_floor) ? IDLE : MOVING_UP;
+            MOVING_DOWN: n_state = (curr_floor == next_floor) ? IDLE : MOVING_DOWN;
+            DOOR_OPEN: n_state = (door_close_req) ? DOOR_CLOSED : DOOR_OPEN;
+            DOOR_CLOSED: n_state = (door_open_req) ? DOOR_OPEN : DOOR_CLOSED;
+            default: n_state = ERROR;
+        endcase;
+    end
+    
 endmodule 
 
 // test comment
