@@ -22,7 +22,7 @@ module elevator_fsm (
         if(rst) begin
             state <= IDLE;
     
-        
+    
 endmodule 
 
 // test comment

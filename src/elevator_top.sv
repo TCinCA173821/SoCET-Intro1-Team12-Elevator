@@ -72,7 +72,30 @@ module elevator_top (
         .led_down   (led_down),
         .led_door   (led_door)
     );
- 
+
+	logic hzX; // wire that brings needed clock to necessary components
+	clock_psc div0.5(.clk(hz100), .rst(rst_n), .lim(8'd99), .hzX(hzX));
 endmodule 
 		
-
+module clock_psc(
+    input logic clk, 
+    input logic rst,
+    input logic [7:0] lim,
+    output logic hzX
+  );
+    logic [7:0] ctr;
+    logic hzX_int;
+    always_ff @(posedge clk or posedge rst) begin
+      if (rst) begin
+        hzX_int <= 1'b0;
+        ctr <= 8'b0;
+      end
+      else if (ctr == lim) begin
+        hzX_int <= ~hzX_int;
+        ctr <= 8'b0;
+      end
+      else
+        ctr <= ctr + 1;
+    end
+    assign hzX = (lim == 0) ? clk : hzX_int;
+  endmodule
